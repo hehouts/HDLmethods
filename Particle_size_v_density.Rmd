@@ -1,0 +1,43 @@
+---
+title: "HDL_Methods_Paper_Figures"
+author: "Hannah Houts"
+date: "September 11, 2019"
+output: 
+  html_document:
+    keep_md: yes
+---
+
+##Load Libraries
+``` {r}
+
+library("tidyverse")
+library("ggplot2")
+library("ggthemr")
+library("devtools")
+library("skimr")
+library("RColorBrewer")
+options(scipen = 999)
+```
+
+
+##Load Data
+```{r message=FALSE, warning=FALSE}
+Particle_dim_data <- readr:: read_csv("/Users/user/Desktop/Papers/Particle_Size_Density_Data.csv")
+
+Particle_dim_data
+```
+
+
+## Generate a Dot Plot, maybe histo?
+
+```{r} 
+Particle_dim_data %>%
+ggplot(aes(x = Size, y = Density, color = Particle, size = (100*Size)))+
+    geom_point()+
+#    scale_y_log10()+
+   scale_x_log10()
+#    scale_size(range = c(0.1, 10), guide = "none")+
+#    theme_dark()
+
+  
+```
